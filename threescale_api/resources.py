@@ -886,7 +886,10 @@ class Invoices(DefaultClient):
     def charge(self, entity_id: int):
         """Charge an Invoice."""
         log.info("[Invoice] charge invoice (%s)", entity_id)
+        log.info("Displaying URL : (%s)",url)
+        print("Self Entity URL is as "+url)
         url = self._entity_url(entity_id) + '/charge'
+        log.info("Displaying URL after change: (%s)",url)
         response = self.rest.post(url)
         instance = self._create_instance(response=response)
         return instance
