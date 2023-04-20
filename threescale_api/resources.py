@@ -879,7 +879,9 @@ class Invoices(DefaultClient):
         log.info("[Invoice] state changed for invoice (%s): %s", entity_id, state)
         params = dict(state=state.value)
         url = self._entity_url(entity_id) + '/state'
+        log.info("Displaying URL : (%s)",url)
         response = self.rest.put(url=url, json=params, **kwargs)
+        log.info("Displaying URL after response: (%s)",url)
         instance = self._create_instance(response=response)
         return instance
 
