@@ -178,8 +178,11 @@ class Accounts(DefaultStateClient):
         Returns(Account): Account instance
         """
         log.info("[SIGNUP] Create new Signup: params=%s, kwargs=%s", params, kwargs)
+        log.info("[URL] URL for 3scale client admin: %s",url)
         url = self.threescale_client.admin_api_url + '/signup'
+        log.info("[URL] URL for 3scale client admin for signup page: %s",url)
         response = self.rest.post(url=url, json=params, **kwargs)
+        log.info("[Response] Response message", response)
         instance = self._create_instance(response=response)
         return instance
 
