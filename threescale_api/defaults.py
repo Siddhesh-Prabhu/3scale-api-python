@@ -73,9 +73,12 @@ class DefaultClient(collections.abc.Mapping):
 
         """
         log.info(self._log_message("[CREATE] Create new ", body=params, args=kwargs))
+        log.info("[URL] display url : %s ",url)
         url = self._entity_url()
         response = self.rest.post(url=url, json=params, **kwargs)
+        log.info("[RESPONSE] display response : %s ",response)
         instance = self._create_instance(response=response)
+        log.info("[INSTANCE] display instance : %s ",instance)
         return instance
 
     def delete(self, entity_id: int = None, **kwargs) -> bool:
